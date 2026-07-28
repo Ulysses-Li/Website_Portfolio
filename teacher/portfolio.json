@@ -1,8 +1,8 @@
 {
     "id": "teacher",
     "studentName": "老師",
-    "projectName": "尚未設定作品名稱",
-    "description": "這是老師的示範專案，敬請期待！",
-    "githubUrl": "",
-    "isReady": false
+    "projectName": "反重力懸浮宇宙餐廳 - 智慧點餐系統",
+    "description": "這是一個以智慧點餐系統為主題的專案，旨在提升餐廳的點餐效率和顧客體驗。透過先進的技術，我們希望能夠實現一個反重力懸浮的用餐環境，讓顧客在享受美食的同時，也能感受到科技帶來的便利與樂趣。",
+    "githubUrl": "https://tcnrgavin2.github.io/web13/",
+    "isReady": true
 }
