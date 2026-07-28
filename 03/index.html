@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學員作品集 | Vibe Coding 前端網頁開發班</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0f14;
+            --card-bg: rgba(25, 28, 36, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-glow);
+            filter: blur(150px);
+            opacity: 0.15;
+            top: 20%;
+            left: 30%;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-glow);
+            filter: blur(150px);
+            opacity: 0.15;
+            bottom: 20%;
+            right: 30%;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-glow);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 0 0 1rem 0;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .student-info {
+            font-size: 1.2rem;
+            color: #818cf8;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .loader {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 2.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">COMING SOON</div>
+        <h1 id="project-title">作品開發中</h1>
+        <div class="student-info" id="student-name">學員：載入中...</div>
+        <p>這位學員正在努力運用所學的前端技術，精心打造個人作品中。敬請期待！</p>
+        
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <a href="../index.html" class="back-btn">返回作品展示首頁</a>
+    </div>
+
+    <script>
+        fetch('./portfolio.json')
+            .then(res => res.json())
+            .then(data => {
+                if (data.studentName) {
+                    document.getElementById('student-name').textContent = "學員：" + data.studentName;
+                }
+                if (data.projectName && data.isReady) {
+                    document.getElementById('project-title').textContent = data.projectName;
+                }
+            })
+            .catch(() => {
+                const pathParts = window.location.pathname.split('/');
+                const currentFolder = decodeURIComponent(pathParts[pathParts.length - 2] || '');
+                if (currentFolder && currentFolder.includes('_')) {
+                    const name = currentFolder.split('_')[1];
+                    document.getElementById('student-name').textContent = "學員：" + name;
+                } else {
+                    document.getElementById('student-name').textContent = "學員";
+                }
+            });
+    </script>
+</body>
+</html>

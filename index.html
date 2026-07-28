@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Vibe Coding 前端網頁開發班 | 學員作品集</title>
+    <meta name="description" content="展示 Vibe Coding 前端網頁開發班全體學員的精心作品集。精選 HTML, CSS 與 JavaScript 開發專案，見證從零開始的前端成長軌跡。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <!-- Ambient glowing backgrounds -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <div class="container">
+        
+        <!-- Header Section -->
+        <header>
+            <div class="badge-banner">
+                <i class="fa-solid fa-code"></i> Student Showcase Portfolio
+            </div>
+            <h1>Vibe Coding 前端網頁開發班</h1>
+            <p class="subtitle">學員精選作品集．在這裡見證網頁開發的無限可能</p>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="stats-container" aria-label="作品統計數據">
+            <div class="stat-card">
+                <div class="stat-number" id="total-count">0</div>
+                <div class="stat-label">學員總數</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="ready-count">0</div>
+                <div class="stat-label">已發表作品</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pending-count">0</div>
+                <div class="stat-label">作品準備中</div>
+            </div>
+        </section>
+
+        <!-- Search and Filter Controls -->
+        <section class="controls-row" aria-label="搜尋與篩選器">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜尋學員姓名、作品名稱或關鍵字..." aria-label="搜尋學員與作品">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            
+            <div class="filter-btn-group" role="group" aria-label="狀態篩選">
+                <button class="filter-btn active" data-filter="all">全部作品</button>
+                <button class="filter-btn" data-filter="ready">已完成</button>
+                <button class="filter-btn" data-filter="pending">開發中</button>
+            </div>
+        </section>
+
+        <!-- Portfolio Cards Grid -->
+        <main class="portfolio-grid" id="portfolio-grid">
+            <!-- Cards will be dynamically inserted here via JS -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">
+                <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                <p>正在載入學員作品集資料，請稍候...</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Vibe Coding 前端網頁開發班. All Rights Reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+                學員提交 PR 時，請於各自的子資料夾修改 <code>portfolio.json</code> 並放入 <code>screenshot.png</code> 即可自動更新作品卡片。
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Application Script -->
+    <script src="./app.js"></script>
+</body>
+</html>
